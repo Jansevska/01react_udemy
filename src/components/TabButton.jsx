@@ -1,10 +1,14 @@
-import { Children } from "react";
 
-export default function TabButton(props) {
-    return <li><button>{props.children}</button></li>;
+
+export default function TabButton({children, onSelect}) {
+    return (
+        <li>
+            <button onClick={onSelect}>{children}</button>
+        </li>
+    );
 }
 
-// or we can destructure the props and write like this:
-// export default function TabButton({children}) {
-//     return <li><button>{children}</button></li>;
+// above the code below is destructured:
+// export default function TabButton(props) {
+//     return <li><button>{props.children}</button></li>;
 // }
