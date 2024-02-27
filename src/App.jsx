@@ -20,6 +20,20 @@ function App() {
     console.log(selectedTopic);
 }
 
+let tabContent = <p>Please select a topic.</p>;
+
+if (selectedTopic) {
+  tabContent = (
+    <div id="tab-content">
+              <h3>{ EXAMPLES[selectedTopic].title }</h3>
+              <p>{ EXAMPLES[selectedTopic].description }</p>
+              <pre>
+                <code>{ EXAMPLES[selectedTopic].code }</code>
+              </pre>
+            </div>
+  );
+}
+
 
   return (
     <div>
@@ -47,18 +61,12 @@ function App() {
             <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
           </menu>
           {/* Dynamic Content for TabButtons = {tabContent}*/}
-          {/* {tabContent} */}
-          {!selectedTopic ? (
-            <p>Please select a topic.</p>
-          ) : (
-            <div id="tab-content">
-              <h3>{ EXAMPLES[selectedTopic].title }</h3>
-              <p>{ EXAMPLES[selectedTopic].description }</p>
-              <pre>
-                <code>{ EXAMPLES[selectedTopic].code }</code>
-              </pre>
-            </div>
-          )}
+          {tabContent}
+          
+          {/* another way of showing the dynamic conent would be: */}
+          {/* If NO selectedTopic, show "Please select a topic." >>> {!selectedTopic && } */}
+          {/* If selectedTopic, show <div id="tab-content">  >>> {selectedTopic && (<div id="tab-content"></div>)}*/}
+          
         </section>
       </main>
     </div>
